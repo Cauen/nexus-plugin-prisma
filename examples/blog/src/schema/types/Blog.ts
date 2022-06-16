@@ -24,7 +24,6 @@ export const Query = queryField((t) => {
   })
   t.crud.users({ filtering: true, alias: 'people' })
   t.crud.posts({ type: 'CustomPost', ordering: true, filtering: true })
-
   //
   // Examples showing custom resolvers
   //
@@ -36,7 +35,7 @@ export const Query = queryField((t) => {
     },
     resolve(_root, args, ctx) {
       return ctx.prisma.blog
-        .findOne({
+        .findFirst({
           where: {
             id: args.id,
           },

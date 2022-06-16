@@ -7,7 +7,7 @@
     "clean": "rm -rf dist",
     "build": "yarn -s clean && yarn -s generate && tsc",
     "style": "prettier --write 'src/**/*'",
-    "dev": "ts-node-dev --tree-kill --no-notify --respawn --transpile-only src/main.ts",
+    "dev": "ts-node-dev --tree-kill --no-notify --respawn --rs --watch ./node_modules/nexus-plugin-prisma/dist/*.js --transpile-only src/main.ts",
     "dev:migrate": "prisma migrate dev --preview-feature",
     "generate": "yarn -s generate:prisma && yarn -s generate:nexus",
     "generate:prisma": "prisma generate",

@@ -1,6 +1,6 @@
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://postgres:postgres@localhost:5432/myapp"
+  url      = "postgresql://postgres:mysecretpassword@localhost:5432/nexus-plugin-prisma-dev"
 }
 
 generator prisma_client {

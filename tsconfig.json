@@ -8,7 +8,7 @@
     "strict": true,
     "esModuleInterop": true,
     "rootDir": "src",
-    "outDir": "dist",
+    "outDir": "examples/blog/node_modules/nexus-plugin-prisma/dist",
     "declaration": true,
     "sourceMap": true,
     "declarationMap": true,

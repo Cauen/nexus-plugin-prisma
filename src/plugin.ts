@@ -50,6 +50,7 @@ export function nexusPrisma(options?: Options) {
 
       wasCrudUsedButDisabled = wasCrudUsed
 
+      console.log('Plugin.js')
       types.forEach(nexusBuilder.addType)
     },
     onBeforeBuild() {
