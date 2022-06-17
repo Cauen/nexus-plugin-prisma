@@ -5,7 +5,7 @@ import { getTransformedDmmf } from '../../dmmf/transformer'
 import { getCrudMappedFields } from '../mapping'
 import { defaultFieldNamingStrategy } from '../naming-strategies'
 import { PaginationStrategy } from '../../pagination'
-import { hardWriteFile, hardWriteFileSync } from '../../utils'
+import * as fs from 'fs-jetpack'
 
 type Options = {
   prismaClientPath: string
@@ -15,16 +15,6 @@ type Options = {
 }
 
 export function generateSync(options: Options): void {
-  doGenerate(true, options)
-}
-
-export function generate(options: Options): Promise<void> {
-  return doGenerate(false, options)
-}
-
-export function doGenerate(sync: true, options: Options): void
-export function doGenerate(sync: false, options: Options): Promise<void>
-export function doGenerate(sync: boolean, options: Options): void | Promise<void> {
   const paginationStrategy = options.paginationStrategy
   const prismaClientImportId =
     Path.isAbsolute(options.typegenPath) && Path.isAbsolute(options.prismaClientPath)
@@ -38,11 +28,7 @@ export function doGenerate(sync: boolean, options: Options): void | Promise<void
     nexusPrismaImportId: options.nexusPrismaImportId,
   })
 
-  if (sync) {
-    hardWriteFileSync(options.typegenPath, tsDeclaration)
-  } else {
-    return hardWriteFile(options.typegenPath, tsDeclaration)
-  }
+  return hardWriteFileSync(options.typegenPath, tsDeclaration)
 }
 
 export function render(params: {
@@ -256,4 +242,22 @@ function renderCustomScalars(dmmf: DmmfDocument) {
   return endent`
     type CustomScalars = ${dmmf.customScalars.map((s) => `'${s}'`).join(' | ')}
   `
+}
+
+/**
+ * Write file contents but first delete the file off disk if present. This is a
+ * useful function when the effect of file delete is needed to trigger some file
+ * watch/refresh mechanism, such as is the case with VSCode TS declaration files
+ * inside `@types/` packages.
+ *
+ * For more details that motivated this utility refer to the originating issue
+ * https://github.com/graphql-nexus/nexus-plugin-prisma/issues/453.
+ */
+const hardWriteFileSync = (filePath: string, data: string): void => {
+  try {
+    fs.remove(filePath)
+  } catch (error: any) {
+    if (error.code !== 'ENOENT') throw error
+  }
+  fs.write(filePath, data)
 }

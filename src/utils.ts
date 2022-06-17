@@ -1,5 +1,4 @@
 import { writeFileSync, appendFileSync } from 'fs'
-import * as fs from 'fs-jetpack'
 import { GraphQLResolveInfo } from 'graphql'
 import { core } from 'nexus'
 import * as path from 'path'
@@ -15,41 +14,6 @@ export function dump(x: any, name?: string) {
  */
 export function dumpToFile(x: any, name?: string) {
   writeFileSync(`debug${name ? '-' + name : ''}.json`, JSON.stringify(x, null, 2))
-}
-
-/**
- * Write file contents but first delete the file off disk if present. This is a
- * useful function when the effect of file delete is needed to trigger some file
- * watch/refresh mechanism, such as is the case with VSCode TS declaration files
- * inside `@types/` packages.
- *
- * For more details that motivated this utility refer to the originating issue
- * https://github.com/graphql-nexus/nexus-plugin-prisma/issues/453.
- */
-export const hardWriteFile = (filePath: string, data: string): Promise<void> =>
-  fs
-    .removeAsync(filePath)
-    .catch((error) => {
-      return error.code === 'ENOENT' ? Promise.resolve() : Promise.reject(error)
-    })
-    .then(() => fs.writeAsync(filePath, data))
-
-/**
- * Write file contents but first delete the file off disk if present. This is a
- * useful function when the effect of file delete is needed to trigger some file
- * watch/refresh mechanism, such as is the case with VSCode TS declaration files
- * inside `@types/` packages.
- *
- * For more details that motivated this utility refer to the originating issue
- * https://github.com/graphql-nexus/nexus-plugin-prisma/issues/453.
- */
-export const hardWriteFileSync = (filePath: string, data: string): void => {
-  try {
-    fs.remove(filePath)
-  } catch (error) {
-    if (error.code !== 'ENOENT') throw error
-  }
-  fs.write(filePath, data)
 }
 
 // TODO `any` should be `unknown` but there is a bug (?)

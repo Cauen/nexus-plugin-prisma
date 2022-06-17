@@ -6,7 +6,7 @@ const pkgJson = require('../package.json')
 function ensureDepIsInstalled(depName: string) {
   try {
     require(depName)
-  } catch (err) {
+  } catch (err: any) {
     if (err.code === 'MODULE_NOT_FOUND') {
       console.error(
         `${colors.red('ERROR:')} ${colors.green(
