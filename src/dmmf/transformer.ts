@@ -1,7 +1,7 @@
 import { DMMF } from '@prisma/client/runtime'
 import { inspect } from 'util'
 import { paginationStrategies, PaginationStrategy } from '../pagination'
-import { GlobalComputedInputs, GlobalMutationResolverParams, LocalComputedInputs, myLogger } from '../utils'
+import { GlobalComputedInputs, GlobalMutationResolverParams, LocalComputedInputs } from '../utils'
 import { DmmfDocument } from './DmmfDocument'
 import { InternalDMMF } from './DmmfTypes'
 import { getTypeName } from './helpers'

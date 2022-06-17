@@ -23,11 +23,11 @@ export const Mutation = mutationField((t) => {
 })
 
 export const Query = queryField((t) => {
-  t.crud.blogs({
+  t.crud.blogMany({
     pagination: false,
   })
-  t.crud.users({ filtering: true, alias: 'people' })
-  t.crud.posts({ type: 'CustomPost', ordering: true, filtering: true })
+  t.crud.userMany({ filtering: true, alias: 'people' })
+  t.crud.postMany({ type: 'CustomPost', ordering: true, filtering: true })
   //
   // Examples showing custom resolvers
   //
