@@ -34,7 +34,6 @@ import {
   isEmptyObject,
   LocalComputedInputs,
   lowerFirst,
-  myLogger,
 } from './utils'
 
 interface FieldPublisherConfig {
@@ -552,10 +551,12 @@ export class SchemaBuilder {
     givenConfig: { computedInputs, ...otherConfig },
   }: Required<PublisherConfigData>): ResolvedFieldPublisherConfig {
     return {
-      pagination: true,
       type: field.outputType.type,
       alias: field.name,
       locallyComputedInputs: computedInputs ? computedInputs : {},
+      filtering: otherConfig.filtering === undefined ? field.outputType.isList : otherConfig.filtering,
+      ordering: otherConfig.ordering === undefined ? field.outputType.isList : otherConfig.ordering,
+      pagination: otherConfig.pagination === undefined ? field.outputType.isList : otherConfig.pagination,
       ...otherConfig,
     }
   }
