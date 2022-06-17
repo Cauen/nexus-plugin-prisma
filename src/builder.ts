@@ -34,6 +34,7 @@ import {
   isEmptyObject,
   LocalComputedInputs,
   lowerFirst,
+  myLogger,
 } from './utils'
 
 interface FieldPublisherConfig {
@@ -166,9 +167,10 @@ export interface InternalPublicOptions extends Omit<InternalOptions, 'nexusBuild
 
 export function build(options: InternalOptions) {
   const builder = new SchemaBuilder(options)
+  const types = builder.build()
 
   return {
-    types: builder.build(),
+    types,
     wasCrudUsedButDisabled() {
       return builder.wasCrudUsedButDisabled
     },

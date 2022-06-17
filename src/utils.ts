@@ -1,4 +1,4 @@
-import { writeFileSync } from 'fs'
+import { writeFileSync, appendFileSync } from 'fs'
 import * as fs from 'fs-jetpack'
 import { GraphQLResolveInfo } from 'graphql'
 import { core } from 'nexus'
@@ -183,4 +183,8 @@ export function keys<A extends object>(a: A): (keyof A)[] {
 
 export function apply<T, F extends Function = (x: T) => any>(val: T, fn: F): any {
   return fn(val)
+}
+
+export function myLogger(data: any) {
+  appendFileSync('log.json', JSON.stringify(data, null, 2));
 }

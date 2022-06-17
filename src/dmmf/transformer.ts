@@ -1,7 +1,7 @@
 import { DMMF } from '@prisma/client/runtime'
 import { inspect } from 'util'
 import { paginationStrategies, PaginationStrategy } from '../pagination'
-import { GlobalComputedInputs, GlobalMutationResolverParams, LocalComputedInputs } from '../utils'
+import { GlobalComputedInputs, GlobalMutationResolverParams, LocalComputedInputs, myLogger } from '../utils'
 import { DmmfDocument } from './DmmfDocument'
 import { InternalDMMF } from './DmmfTypes'
 import { getTypeName } from './helpers'
@@ -16,7 +16,12 @@ export type TransformOptions = {
 export const getTransformedDmmf = (
   prismaClientPackagePath: string,
   options?: TransformOptions
-): DmmfDocument => new DmmfDocument(transform(getPrismaClientDmmf(prismaClientPackagePath), options))
+): DmmfDocument => {
+  const dmmf = getPrismaClientDmmf(prismaClientPackagePath)
+  const transformed = transform(dmmf, options)
+  const document = new DmmfDocument(transformed)
+  return document
+}
 
 const addDefaultOptions = (givenOptions?: TransformOptions): Required<TransformOptions> => ({
   globallyComputedInputs: {},

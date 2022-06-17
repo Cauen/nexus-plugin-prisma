@@ -1,4 +1,4 @@
-import { intArg, nonNull, objectType, queryField, stringArg } from 'nexus'
+import { intArg, mutationField, nonNull, objectType, queryField, stringArg } from 'nexus'
 
 export const Blog = objectType({
   name: 'Blog',
@@ -16,6 +16,10 @@ export const Blog = objectType({
     t.model.viewCount()
     t.model.authors()
   },
+})
+
+export const Mutation = mutationField((t) => {
+  t.crud.createOneBlog()
 })
 
 export const Query = queryField((t) => {
