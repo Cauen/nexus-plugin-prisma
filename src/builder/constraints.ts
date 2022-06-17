@@ -1,4 +1,4 @@
-import { DmmfDocument } from './dmmf'
+import { DmmfDocument } from '../dmmf'
 
 /**
  * Find the unique identifiers necessary to indentify a field

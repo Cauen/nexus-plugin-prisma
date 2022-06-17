@@ -1,11 +1,11 @@
 import endent from 'endent'
 import * as Path from 'path'
-import { DmmfDocument, InternalDMMF } from '../dmmf'
-import { getTransformedDmmf } from '../dmmf/transformer'
+import { DmmfDocument, InternalDMMF } from '../../dmmf'
+import { getTransformedDmmf } from '../../dmmf/transformer'
 import { getCrudMappedFields } from '../mapping'
 import { defaultFieldNamingStrategy } from '../naming-strategies'
-import { PaginationStrategy } from '../pagination'
-import { hardWriteFile, hardWriteFileSync } from '../utils'
+import { PaginationStrategy } from '../../pagination'
+import { hardWriteFile, hardWriteFileSync } from '../../utils'
 
 type Options = {
   prismaClientPath: string

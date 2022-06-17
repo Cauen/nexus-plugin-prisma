@@ -1,4 +1,4 @@
-import { colors } from './colors'
+import { colors } from '../colors'
 import { isDevMode } from './is-dev-mode'
 
 export type OnUnknownFieldName = (info: {

@@ -1,7 +1,7 @@
 import * as Nexus from 'nexus'
 import { OnUnknownFieldName, OnUnknownPrismaModelName, raiseErrorOrTriggerHook } from './hooks'
 import { isDevMode } from './is-dev-mode'
-import { Index } from './utils'
+import { Index } from '../utils'
 
 export function proxifyPublishers<T extends object>(
   publishers: T,

@@ -3,8 +3,8 @@ import * as Nexus from 'nexus'
 import { DynamicOutputPropertyDef } from 'nexus/dist/dynamicProperty'
 import * as path from 'path'
 import * as Constraints from './constraints'
-import { addComputedInputs, DmmfDocument, getTransformedDmmf, InternalDMMF } from './dmmf'
-import * as GraphQL from './graphql'
+import { addComputedInputs, DmmfDocument, getTransformedDmmf, InternalDMMF } from '../dmmf'
+import * as GraphQL from '../graphql'
 import {
   OnUnknownArgName,
   OnUnknownFieldName,
@@ -21,7 +21,7 @@ import {
   OperationName,
 } from './naming-strategies'
 import { transformNullsToUndefined } from './null'
-import { paginationStrategies, PaginationStrategyTypes } from './pagination'
+import { paginationStrategies, PaginationStrategyTypes } from '../pagination'
 import { proxifyModelFunction, proxifyPublishers } from './proxifier'
 import { getNexusTypesCompositionForOutput, Publisher } from './publisher'
 import * as Typegen from './typegen'
@@ -35,7 +35,7 @@ import {
   LocalComputedInputs,
   lowerFirst,
   myLogger,
-} from './utils'
+} from '../utils'
 
 interface FieldPublisherConfig {
   alias?: string

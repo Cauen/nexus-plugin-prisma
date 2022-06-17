@@ -1,9 +1,9 @@
 import { GraphQLScalarType } from 'graphql'
 import * as Nexus from 'nexus'
-import { CustomInputArg } from './builder'
-import { DmmfDocument, InternalDMMF } from './dmmf'
-import { scalarsNameValues } from './graphql'
-import { apply, Index } from './utils'
+import { CustomInputArg } from '.'
+import { DmmfDocument, InternalDMMF } from '../dmmf'
+import { scalarsNameValues } from '../graphql'
+import { apply, Index } from '../utils'
 
 export class Publisher {
   typesPublished: Index<boolean> = {}

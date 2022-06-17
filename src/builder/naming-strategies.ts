@@ -1,7 +1,7 @@
 import camelCase from 'camelcase'
 import pluralize from 'pluralize'
-import { InternalDMMF } from './dmmf'
-import { upperFirst } from './utils'
+import { InternalDMMF } from '../dmmf'
+import { upperFirst } from '../utils'
 
 export interface ArgsNamingStrategy {
   whereInput: (typeName: string, fieldName: string) => string

@@ -1,5 +1,5 @@
 import * as Lo from 'lodash'
-import { DmmfDocument, InternalDMMF } from './dmmf'
+import { DmmfDocument, InternalDMMF } from '../dmmf'
 
 /**
  * Take the incoming GraphQL args of a resolver and replaces all `null` values
