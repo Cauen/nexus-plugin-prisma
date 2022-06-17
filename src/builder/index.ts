@@ -34,7 +34,6 @@ import {
   isEmptyObject,
   LocalComputedInputs,
   lowerFirst,
-  myLogger,
 } from '../utils'
 
 interface FieldPublisherConfig {

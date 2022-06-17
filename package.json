@@ -29,7 +29,8 @@
     "postinstall": "node ./scripts/postinstall.js",
     "test": "jest --testTimeout=10000 --forceExit",
     "test:dev": "jest src tests/ --watch",
-    "upgrade-prisma-dev": "yarn add @prisma/cli@dev @prisma/client@dev @prisma/fetch-engine@dev @prisma/get-platform@dev @prisma/migrate@dev @prisma/sdk@dev"
+    "upgrade-prisma-dev": "yarn add @prisma/cli@dev @prisma/client@dev @prisma/fetch-engine@dev @prisma/get-platform@dev @prisma/migrate@dev @prisma/sdk@dev",
+    "ts:check": "tsc --noEmit --incremental"
   },
   "peerDependencies": {
     "@prisma/client": "2.23.x",

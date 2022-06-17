@@ -1,6 +1,6 @@
-import { DmmfDocument, InternalDMMF } from './dmmf'
+import { DmmfDocument, InternalDMMF } from '../dmmf'
 import { defaultFieldNamingStrategy, FieldNamingStrategy, OperationName } from './naming-strategies'
-import { flatMap, lowerFirst } from './utils'
+import { flatMap, lowerFirst } from '../utils'
 
 interface BaseMappedField {
   field: string
