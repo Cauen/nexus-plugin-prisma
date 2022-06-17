@@ -1,5 +1,4 @@
 import camelCase from 'camelcase'
-import pluralize from 'pluralize'
 import { InternalDMMF } from './dmmf'
 import { upperFirst } from './utils'
 
@@ -27,7 +26,7 @@ export type FieldNamingStrategy = Record<OperationName, (fieldName: string, mode
 
 export const defaultFieldNamingStrategy: FieldNamingStrategy = {
   findUnique: (_, modelName) => camelCase(modelName),
-  findMany: (_, modelName) => camelCase(pluralize(modelName)),
+  findMany: (_, modelName) => camelCase(`${modelName}Many`),
   create: (fieldName) => fieldName,
   update: (fieldName) => fieldName,
   delete: (fieldName) => fieldName,
